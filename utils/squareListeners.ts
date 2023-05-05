@@ -1,4 +1,11 @@
-export function upgradeSquareListeners(squares, money, wall, tree, crane, resources, coin) {
+export function upgradeSquareListeners(
+    squares: HTMLDivElement[], 
+    money: string[], 
+    wall: string, 
+    tree: string, 
+    crane: string, 
+    resources: HTMLParagraphElement, 
+    coin: string) {
     for (let square of squares) {
         square.addEventListener("click", function (e) {
             if (square.classList.contains("crane")) {
@@ -19,7 +26,7 @@ export function upgradeSquareListeners(squares, money, wall, tree, crane, resour
                 square.classList.add('tree');
                 square.textContent = tree;
                 return;
-            }
+            }  
             if (square.classList.contains('tree')) {
                 money.pop();
                 resources.textContent = money.join(" ");
@@ -27,16 +34,17 @@ export function upgradeSquareListeners(squares, money, wall, tree, crane, resour
                 square.classList.add('wall');
                 square.textContent = wall;
                 return;
-            }
+            } 
             if (square.classList.contains('wall')) {
                 money.pop();
                 resources.textContent = money.join(" ");
                 square.classList.remove('wall');
                 square.classList.add('crane');
                 square.textContent = crane;
-                return;
+                return
             }
         });
     }
 }
-//# sourceMappingURL=squareListeners.js.map
+
+

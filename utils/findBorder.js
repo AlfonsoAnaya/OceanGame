@@ -1,37 +1,41 @@
 let border = [];
-
 function findBorder(squares, gridWidth, gridHeight) {
-    for (let square of border) { square.classList.remove('border') };
+    for (let square of border) {
+        square.classList.remove('border');
+    }
+    ;
     border = [];
     for (let square of squares) {
-      let id = parseInt(square.id);
-      if (square.classList.contains('ocean')) {
-        //top 
-        if (square.id >= 0 && square.id < gridWidth) {
-          if (!squares[id + 1].classList.contains('ocean')
-            || !squares[id + gridWidth].classList.contains('ocean')) {
-              border.push(square);
+        let id = parseInt(square.id);
+        if (square.classList.contains('ocean')) {
+            //top 
+            if (id >= 0 && id < gridWidth) {
+                if (!squares[id + 1].classList.contains('ocean')
+                    || !squares[id + gridWidth].classList.contains('ocean')) {
+                    border.push(square);
+                }
+            }
+            //check for land 
+            //bottom      
+            if (id >= (gridWidth * gridHeight) - gridWidth && id < (gridWidth * gridHeight)) {
+                //check for land 
+                if (!squares[id + 1].classList.contains('ocean')
+                    || !squares[id - gridWidth].classList.contains('ocean'))
+                    border.push(square);
+            }
+            //center
+            if (id >= gridWidth && id < gridWidth * gridHeight - gridWidth) {
+                //check for land 
+                if (!squares[id + 1].classList.contains('ocean')
+                    || !squares[id - gridWidth].classList.contains('ocean')
+                    || !squares[id + gridWidth].classList.contains('ocean'))
+                    border.push(square);
             }
         }
-        //check for land 
-        //bottom      
-        if (square.id >= (gridWidth * gridHeight) - gridWidth && square.id < (gridWidth * gridHeight)) {
-          //check for land 
-          if (!squares[id + 1].classList.contains('ocean')
-            || !squares[id - gridWidth].classList.contains('ocean')) border.push(square);
-        }
-        //center
-        if (square.id >= gridWidth && square.id < gridWidth * gridHeight - gridWidth) {
-          //check for land 
-          if (!squares[id + 1].classList.contains('ocean')
-            || !squares[id - gridWidth].classList.contains('ocean')
-            || !squares[id + gridWidth].classList.contains('ocean')) border.push(square);
-        }
-      }
     }
     for (let square of border) {
-      square.classList.add('border');
+        square.classList.add('border');
     }
-  }
-
-  export {border, findBorder};
+}
+export { border, findBorder };
+//# sourceMappingURL=findBorder.js.map
