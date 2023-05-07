@@ -33,7 +33,7 @@ export function reconstruct(
   //from accessible squares select randomly which will succeed =create yet new array=;
   for (let square of craneAccessibleSquares) {
     let randomNum = Math.random();
-    if (randomNum >= .66) {
+    if (randomNum >= .55) {
       reconstructSquares.push(craneAccessibleSquares[Math.floor(Math.random() * craneAccessibleSquares.length)]);
     }
   }

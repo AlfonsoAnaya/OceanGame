@@ -4,7 +4,7 @@ export function calculateBeachRewards(squares, money, coin) {
         if (square.classList.contains('beach'))
             accumulator++;
     }
-    accumulator = accumulator / 2;
+    accumulator = accumulator / 3;
     for (let i = 0; i < accumulator; i++) {
         money.push(coin);
     }
